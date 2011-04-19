@@ -1,0 +1,45 @@
+Description
+
+Tool to parse a set of xsd's and generate a flattened 
+graph of xsd entity relationships.  
+
+Outputs 2 files:
+entities: 
+  unique entity with filename (1 per line) 
+
+refs:  
+  parent to descendent entity relationships (1 per line)
+    
+Outputs warnings/errors to STDERR
+
+------------------------------------------------------------
+Purpose
+
+Impact Analysis 
+- Simplify/Automate dependency detection upon schema change
+(i.e. what top level elements are affected by a lower
+level entity change).  
+
+Error/Complexity detection
+- Errors and circular references are output to STDERR
+- depth of descendent captured in refs file
+
+Simple to incorporate into continuous build environment
+(only depends on perl)
+
+------------------------------------------------------------
+Example Usage
+
+1.  Create refs, entities via xsd-parse.pl
+    find oag -name '*.xsd' | xsd-parse.pl 2> parse.err
+
+2.  Cleanup and sort refs, entities into refs.s and entities.s
+    (assumes abb.sed defines abbreviation replacements)
+    sed -f abb.sed refs | sort > refs.s
+    sed -f abb.sed entities | sort > entities.s
+
+3.  Find dependencies and print via unix tools
+    This example lists all xsd files with entities that
+    reference the "normalizedString" element
+    join <(grep '^[^ ]* {xs}normalizedString,simpleType .*$' refs.s | cut -d' ' -f1 | sort | uniq) entities.s | cut -d' ' -f2 | sort | uniq
+
