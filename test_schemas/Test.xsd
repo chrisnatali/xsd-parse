@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:test="http://xsd-parse-test.com/v1" targetNamespace="http://xsd-parse-test.com/v1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+        <xsd:include schemaLocation="TestTypes.xsd"/>
+        <xsd:element name="OrganizationMessage">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Type" type="xsd:string" minOccurs="1"/>
+              <xsd:element name="Organization" type="test:OrganizationType" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+</xsd:schema>

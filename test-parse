@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Script to test xsd-parse against test schemas
+
+# run the script
+find test_schemas -name '*.xsd' | xsd-parse.pl 2> parse.err
+
+# test the file counts
+ENTITY_CT=`wc -l entities | cut -d' ' -f1`
+ENTITY_TST=$(( $ENTITY_CT == 35 ));
+if [ $ENTITY_TST -eq 1 ]; then
+  echo "Entity Count OK"
+else
+  echo "Entity Count FAILED"
+fi
+
+REFS_CT=`wc -l refs | cut -d' ' -f1`
+REFS_TST=$(( $REFS_CT == 27 ));
+if [ $REFS_TST -eq 1 ]; then
+  echo "Refs Count OK"
+else 
+  echo "Refs Count FAILED"
+fi
+
+NAME_TYPES_CT=`grep '^[^ ]* {[^}]*}NameType' refs | wc -l | cut -d' ' -f1`
+NAME_TYPES_TST=$(( $NAME_TYPES_CT == 2 ));
+if [ $NAME_TYPES_TST -eq 1 ]; then
+  echo "Name Type Ref Count OK"
+else
+  echo "Name Type Ref Count FAILED"
+fi
+
+CYCLE_CT=`grep 'Cycle' parse.err | wc -l | cut -d' ' -f1`
+CYCLE_TST=$(( $CYCLE_CT == 2 ));
+if [ $CYCLE_TST -eq 1 ]; then
+  echo "Cycle Count OK"
+else
+  echo "Cycle Count FAILED"
+fi
+
+
+if [ $ENTITY_TST -eq 1 -a $REFS_TST -eq 1 -a $NAME_TYPES_TST -eq 1 ]; then
+  echo "ALL tests PASSED"
+else
+  echo "At least one test FAILED"
+fi

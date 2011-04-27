@@ -1,0 +1,36 @@
+{http://www.w3.org/2001/XMLSchema}byte,simpleType 
+{http://www.w3.org/2001/XMLSchema}anyType,simpleType 
+{http://www.w3.org/2001/XMLSchema}token,simpleType 
+{http://www.w3.org/2001/XMLSchema}time,simpleType 
+{http://www.w3.org/2001/XMLSchema}negativeInteger,simpleType 
+{http://www.w3.org/2001/XMLSchema}NCName,simpleType 
+{http://www.w3.org/2001/XMLSchema}long,simpleType 
+{http://www.w3.org/2001/XMLSchema}int,simpleType 
+{http://www.w3.org/2001/XMLSchema}dateTime,simpleType 
+{http://www.w3.org/2001/XMLSchema}date,simpleType 
+{http://www.w3.org/2001/XMLSchema}language,simpleType 
+{http://www.w3.org/2001/XMLSchema}nonPositiveInteger,simpleType 
+{http://www.w3.org/2001/XMLSchema}nonNegativeInteger,simpleType 
+{http://www.w3.org/2001/XMLSchema}boolean,simpleType 
+{http://www.w3.org/2001/XMLSchema}short,simpleType 
+{http://www.w3.org/2001/XMLSchema}duration,simpleType 
+{http://www.w3.org/2001/XMLSchema}gYear,simpleType 
+{http://www.w3.org/2001/XMLSchema}ID,simpleType 
+{http://www.w3.org/2001/XMLSchema}string,simpleType 
+{http://www.w3.org/2001/XMLSchema}gYearMonth,simpleType 
+{http://www.w3.org/2001/XMLSchema}anyURI,simpleType 
+{http://www.w3.org/2001/XMLSchema}positiveInteger,simpleType 
+{http://www.w3.org/2001/XMLSchema}normalizedString,simpleType 
+{http://www.w3.org/2001/XMLSchema}double,simpleType 
+{http://www.w3.org/2001/XMLSchema}hexBinary,simpleType 
+{http://www.w3.org/2001/XMLSchema}integer,simpleType 
+{http://www.w3.org/2001/XMLSchema}QName,simpleType 
+{http://www.w3.org/2001/XMLSchema}decimal,simpleType 
+{http://www.w3.org/2001/XMLSchema}base64Binary,simpleType 
+{http://www.w3.org/2001/XMLSchema}float,simpleType 
+{http://xsd-parse-test.com/v1}RelatedEntityType,complexType /home/natalic/src/dis-tools/xsd-parse/test_schemas/TestTypes.xsd
+{http://xsd-parse-test.com/v1}OrganizationType,complexType /home/natalic/src/dis-tools/xsd-parse/test_schemas/TestTypes.xsd
+{http://xsd-parse-test.com/v1}NameType,complexType /home/natalic/src/dis-tools/xsd-parse/test_schemas/TestTypes.xsd
+,include /home/natalic/src/dis-tools/xsd-parse/test_schemas/Test.xsd
+{http://xsd-parse-test.com/v1}OrganizationMessage,element /home/natalic/src/dis-tools/xsd-parse/test_schemas/Test.xsd
+{http://xsd-parse-test.com/v1}Related,element /home/natalic/src/dis-tools/xsd-parse/test_schemas/TestTypes.xsd

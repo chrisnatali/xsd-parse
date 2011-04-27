@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:test="http://xsd-parse-test.com/v1" targetNamespace="http://xsd-parse-test.com/v1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--  This is a comment -->
+	<xsd:complexType name="OrganizationType">
+		<xsd:sequence>
+			<!-- Comment here -->
+			<xsd:element name="ID" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Unique Identifier</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Name" type="test:NameType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Org can have many names</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element ref="test:Related" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Related Organizations</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NameType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="context" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:element name="Related" type="test:RelatedEntityType"/>
+	<xsd:complexType name="RelatedEntityType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Related Entity ID</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Type" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Relation Type</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
